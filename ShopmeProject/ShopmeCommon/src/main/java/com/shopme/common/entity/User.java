@@ -59,8 +59,14 @@ public class User {
 		this.lastName = lastName;
 	}
 	
+	
+	
 	public void addRole(Role role) {
 		this.roles.add(role);
+	}
+	
+	public boolean getStatus() {
+		return enabled;
 	}
 
 	public Integer getId() {
