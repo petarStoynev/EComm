@@ -60,8 +60,14 @@
 			
 		</nav>
 	</div>
+	
 	<div>
 		<h1>Manage Users</h1>
+		<a th:href="@{/users/new}">Create New User</a>
+	</div>
+	
+	<div th:if="${message != null}" class="alert alert-success text-center">
+		[[${message}]]
 	</div>
 	
 	<div> 
