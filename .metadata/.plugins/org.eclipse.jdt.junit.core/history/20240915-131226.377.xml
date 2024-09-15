@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="UserRepositoryTests.testGetUserByEmail" project="ShopmeBackEnd" tests="1" started="1" failures="0" errors="0" ignored="0">
+  <testsuite name="com.shopme.admin.user.UserRepositoryTests" time="1.663" displayname="UserRepositoryTests" uniqueid="[engine:junit-jupiter]/[class:com.shopme.admin.user.UserRepositoryTests]">
+    <testcase name="testGetUserByEmail" classname="com.shopme.admin.user.UserRepositoryTests" time="1.663" displayname="testGetUserByEmail()" uniqueid="[engine:junit-jupiter]/[class:com.shopme.admin.user.UserRepositoryTests]/[method:testGetUserByEmail()]"/>
+  </testsuite>
+</testrun>
