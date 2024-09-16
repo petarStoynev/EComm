@@ -6,6 +6,8 @@
 	<title>Insert title here</title>
 	
 	<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{/fontawesome/all.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{/style.css}"/>
 	<script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script>
 	<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 </head>
@@ -75,6 +77,7 @@
 			<thead class="thead-dark">
 				<tr>
 					<th>User ID</th>
+					<th>Photo</th>
 					<th>Email</th>
 					<th>First Name</th>
 					<th>Last Name</th>
@@ -86,13 +89,22 @@
 			<tbody>
 				<tr th:each="user: ${listUsers}">
 					<td>[[${user.id}]]</td>
+					<td><span class="fa-solid fa-image-portrait fa-2x icon-silver"></span></td>
 					<td>[[${user.email}]]</td>
 					<td>[[${user.firstName}]]</td>
 					<td>[[${user.lastName}]]</td>
 					<td>[[${user.roles}]]</td>
-					<td>[[${user.enabled}]]</td>
+					
 					<td>
-						Edit &nbsp; Delete
+						<a th:if="${user.enabled == true}" class="fas fa-check-circle fa-2x icon-green" href=""></a>
+						<a th:if="${user.enabled == false}" class="fas fa-check-circle fa-2x icon-dark" href=""></a>
+					</td>
+					
+					<td>
+					<a class="fa-regular fa-pen-to-square fa-2x icon-green" th:href="@{'/users/edit/' + ${user.id}}"
+					title="Edit this user"></a>
+						 &nbsp;
+					<a class="fa-solid fa-trash fa-2x icon-dark" href=""></a>
 					</td>
 				</tr>
 			</tbody>
