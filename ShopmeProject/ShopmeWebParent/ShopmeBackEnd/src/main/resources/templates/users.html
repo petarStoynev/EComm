@@ -89,15 +89,24 @@
 			<tbody>
 				<tr th:each="user: ${listUsers}">
 					<td>[[${user.id}]]</td>
-					<td><span class="fa-solid fa-image-portrait fa-2x icon-silver"></span></td>
+					<td>
+					<span th:if="${user.photos == null}" class="fa-solid fa-image-portrait fa-2x icon-silver"></span>
+					<img th:if="${user.photos != null}" th:src="@{${user.photosImagePath}}"
+					style="width: 100px"/>
+					</td>
 					<td>[[${user.email}]]</td>
 					<td>[[${user.firstName}]]</td>
 					<td>[[${user.lastName}]]</td>
 					<td>[[${user.roles}]]</td>
 					
 					<td>
-						<a th:if="${user.enabled == true}" class="fas fa-check-circle fa-2x icon-green" href=""></a>
-						<a th:if="${user.enabled == false}" class="fas fa-check-circle fa-2x icon-dark" href=""></a>
+						<a th:if="${user.enabled == true}" class="fas fa-check-circle fa-2x icon-green" 
+						th:href="@{'/users/' + ${user.id} + '/enabled/false'}"
+						title="Disable user"></a>
+						
+						<a th:if="${user.enabled == false}" class="fas fa-circle fa-2x icon-dark" 
+						th:href="@{'/users/' + ${user.id} + '/enabled/true'}"
+						title="Enable user"></a>
 					</td>
 					
 					<td>

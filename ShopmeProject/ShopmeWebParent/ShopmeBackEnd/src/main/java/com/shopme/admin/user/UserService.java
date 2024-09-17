@@ -10,7 +10,10 @@ import org.springframework.stereotype.Service;
 import com.shopme.common.entity.Role;
 import com.shopme.common.entity.User;
 
+import jakarta.transaction.Transactional;
+
 @Service
+@Transactional
 public class UserService {
 
 	@Autowired
@@ -31,7 +34,7 @@ public class UserService {
 		return (List<Role>) roleRepo.findAll();
 	}
 
-	public void save(User user) {
+	public User save(User user) {
 		boolean isUpdatingUser = (user.getId() != null);
 
 		if (isUpdatingUser) {
@@ -48,7 +51,7 @@ public class UserService {
 			encodePassword(user);
 		}
 
-		userRepo.save(user);
+		return userRepo.save(user);
 	}
 
 	private void encodePassword(User user) {
@@ -97,6 +100,10 @@ public class UserService {
 		
 		userRepo.deleteById(id);
 		
+	}
+	
+	public void updateEnabledStatus(Integer id, boolean enabled) {
+		userRepo.updateEnabledStatus(id, enabled);
 	}
 
 }
