@@ -6,6 +6,7 @@ import java.util.List;
 import javax.lang.model.element.ModuleElement;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,10 +30,20 @@ public class UserController {
 
 	@GetMapping("/users")
 	public String listAll(Model model) {
-
-		List<User> listUsers = service.listAll();
-		model.addAttribute("listUsers", listUsers);
-
+		return listByPage(1, model);
+	}
+	
+	@GetMapping("/users/page/{pageNum}")
+	public String listByPage(@PathVariable(name="pageNum") int pageNum, Model model) {
+		Page<User> page = service.listByPage(pageNum);
+		List<User> listUsers = page.getContent();
+		
+		System.out.println("Pagenum = " +  pageNum);
+		System.out.println("Total elements = " +  page.getTotalElements());
+		System.out.println("Total pages = " +  page.getTotalPages());
+		
+		model.addAttribute("listUsers",listUsers);
+		
 		return "users";
 	}
 
@@ -57,6 +68,11 @@ public class UserController {
 		
 		if(!multipartFile.isEmpty()) {
 			String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+			
+			//if(fileName.contains(" ")) {
+			//    fileName = fileName.replaceAll(" ", "_");
+			//}		
+			
 			user.setPhotos(fileName);
 			User savedUser = service.save(user);
 			String uploadDir = "user-photos/" + savedUser.getId();
@@ -72,7 +88,7 @@ public class UserController {
 			
 		
 		
-		
+		 
 
 		 redirectAttributes.addFlashAttribute("message", "The user has been saved successfully!");
 
