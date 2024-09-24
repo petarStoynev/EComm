@@ -17,7 +17,7 @@ public class AbstractExporter {
 			String extension) throws IOException {
 		DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
 		String timestamp = dateFormatter.format(new Date());
-		String fileName ="users_" + timestamp + ".csv";
+		String fileName ="users_" + timestamp + extension;
 		
 		response.setContentType("text/csv");
 		
