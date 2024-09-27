@@ -16,9 +16,26 @@ import org.springframework.security.web.SecurityFilterChain;
 public class WebSecurityConfig {
 
 	@Bean
+	UserDetailsService userDetailsService() {
+		return new ShopmeUserDetailsService();
+	}
+
+	
+	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
+	
+	@Bean
+	DaoAuthenticationProvider authenticationProvider() {
+		DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+		authProvider.setUserDetailsService(userDetailsService());
+		authProvider.setPasswordEncoder(passwordEncoder());
+		
+		return authProvider;
+	}
+
+	
 
 	@Bean
 	SecurityFilterChain configureHttp(HttpSecurity http) throws Exception {
