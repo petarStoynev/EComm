@@ -50,6 +50,10 @@ public class ShopmeUserDetails implements UserDetails {
 		// TODO Auto-generated method stub
 		return user.getEmail();
 	}
+	
+	public String getFullname() {
+		return user.getFirstName()	+ " " + user.getLastName();
+	}
 
 
 

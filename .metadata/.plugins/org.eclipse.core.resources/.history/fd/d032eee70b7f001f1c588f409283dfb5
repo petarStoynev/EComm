@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-	<meta http-equiv="Content-Type" content="text/html"; charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0">
-	<title>Insert title here</title>
-	
-	<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
-	<link rel="stylesheet" type="text/css" th:href="@{/fontawesome/all.css}"/>
-	<link rel="stylesheet" type="text/css" th:href="@{/style.css}"/>
-	<script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script>
-	<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<head th:replace="fragments :: page_head('Users - Shopme Admin')">
 </head>
 <body>
 <div class="container-fluid">
@@ -65,11 +56,13 @@
 	
 	<div>
 		<h1>Manage Users</h1>
-		<a th:href="@{/users/new}">Create New User</a>
+		<a th:href="@{/users/new}" class="fa-solid fa-user-plus fa-2x icon-dark mr-2"></a>
+		
+		<a th:href="@{/users/export/csv}" class="fa-solid fa-file-csv fa-2x icon-dark mr-2"></a>
 		&nbsp;|&nbsp;
-		<a th:href="@{/users/export/csv}">Export to CSV</a>
+		<a th:href="@{/users/export/excel}" class="fa-solid fa-file-excel fa-2x icon-dark mr-2"></a>
 		&nbsp;|&nbsp;
-		<a th:href="@{/users/export/excel}">Export to Excel</a>
+		<a th:href="@{/users/export/pdf}" class="fa-solid fa-file-pdf fa-2x icon-dark"></a>
 	</div>
 	
 	<div th:if="${message != null}" class="alert alert-success text-center">
@@ -83,36 +76,44 @@
 			Filter:&nbsp;
 			<input type="search" name="keyword" th:value="${keyword}" class="form-control" required/>
 			&nbsp;&nbsp;
-			<input type="submit" value="Search" class="btn btn-primary"/>
+			<button type="submit" value="Search" class="btn btn-primary">
+				<i class="fa-brands fa-searchengin"></i>
+			</button>
 			&nbsp;&nbsp;
-			<input type="button" value="Clear" class="btn btn-secondary" onclick="clearFilter()"/>
+			<button type="button" value="Clear" class="btn btn-secondary" onclick="clearFilter()">
+				<i class="fa-solid fa-eraser"></i>
+			</button>
 		</form>
 	</div>
 	
-	<div> 
+	<div class="full-details"> 
 		<table class="table table-bordered table-striped table-hover table-responsive-xl">
 			<thead class="thead-dark">
 				<tr>
-					<th th:replace="fragments :: column_link('id','User ID')"/>
+					<th class="hideable-column">
+						<th th:replace="fragments :: column_link('id','User ID','tag')"/>
+					</th>
 					<th>Photo</th>
-					<th th:replace="fragments :: column_link('email','E-mail')"/>
-					<th th:replace="fragments :: column_link('firstName','First Name')"/>
-					<th th:replace="fragments :: column_link('lastName','Last Name')"/>
+					<th class="hideable-column">
+					<th th:replace="fragments :: column_link('email','E-mail','tag')"/>
+					</th>
+					<th th:replace="fragments :: column_link('firstName','First Name','none')"/>
+					<th th:replace="fragments :: column_link('lastName','Last Name', 'none')"/>
 					<th>Roles</th>
-					<th th:replace="fragments :: column_link('enabled','Enabled')"/>
+					<th th:replace="fragments :: column_link('enabled','Enabled', 'none')"/>
 					
 					<th></th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr th:each="user: ${listUsers}">
-					<td>[[${user.id}]]</td>
+					<td class="hideable-column">[[${user.id}]]</td>
 					<td>
 					<span th:if="${user.photos == null}" class="fa-solid fa-image-portrait fa-2x icon-silver"></span>
 					<img th:if="${user.photos != null}" th:src="@{${user.photosImagePath}}"
 					style="width: 100px"/>
 					</td>
-					<td>[[${user.email}]]</td>
+					<td class="hideable-column">[[${user.email}]]</td>
 					<td>[[${user.firstName}]]</td>
 					<td>[[${user.lastName}]]</td>
 					<td>[[${user.roles}]]</td>
@@ -140,6 +141,37 @@
 		</table>
 	</div>
 	
+	<div class="less-details">
+		<div th:each="user: ${listUsers}" class="row m-1">
+			<div class="col">
+			<span th:if="${user.photos == null}" class="fa-solid fa-image-portrait fa-2x icon-silver"></span>
+					<img th:if="${user.photos != null}" th:src="@{${user.photosImagePath}}"
+					style="width: 100px"/>
+			</div>
+			<div class="col">
+				<div>[[${user.fullName}]]</div>
+				<div>[[${user.roles}]]</div>
+				<div class="mt-2">
+					<a th:if="${user.enabled == true}" class="fas fa-check-circle fa-2x icon-green" 
+						th:href="@{'/users/' + ${user.id} + '/enabled/false'}"
+						title="Disable user"></a>
+						
+						<a th:if="${user.enabled == false}" class="fas fa-circle fa-2x icon-dark" 
+						th:href="@{'/users/' + ${user.id} + '/enabled/true'}"
+						title="Enable user"></a>
+						&nbsp;
+					<a class="fa-regular fa-pen-to-square fa-2x icon-green" th:href="@{'/users/edit/' + ${user.id}}"
+					title="Edit this user"></a>
+						 &nbsp;
+					<a class="fa-solid fa-trash fa-2x icon-dark link-delete" th:href="@{'/users/delete/' + ${user.id}}"
+					th:userId="${user.id}"
+					title="Delete this user"></a>
+				</div>
+			</div>
+			<div>&nbsp;</div>
+		</div>
+	</div>
+	
 	<div class="text-center m-1" th:if="${totalItems > 0}">
 		<span>Showing users # [[${startCount}]] to [[${endCount}]] of [[${totalItems}]]</span>
 	</div>
@@ -151,7 +183,7 @@
 	
 	<div th:if="${totalPages > 0}">
 		<nav>
-  			<ul class="pagination justify-content-center">
+  			<ul class="pagination justify-content-center flex-wrap">
   			
     			<li th:class="${currentPage > 1} ? 'page-item' : 'page-item disabled'">
     			<a th:replace="fragments :: page_link(1,'First')"></a>
