@@ -42,7 +42,10 @@ public class WebSecurityConfig {
 
 		http.authorizeHttpRequests(auth -> auth.anyRequest().authenticated())
 				.formLogin(form -> form.loginPage("/login").usernameParameter("email").permitAll())
-				.logout(logout -> logout.permitAll());
+				.logout(logout -> logout.permitAll())
+				.rememberMe(rem -> rem
+						.key("AbcDefgHijKlmnOpqrs_1234567890")
+						.tokenValiditySeconds(7 * 24 * 60 * 60));
 
 		return http.build();
 	}
