@@ -124,4 +124,27 @@ public class UserService {
 		userRepo.updateEnabledStatus(id, enabled);
 	}
 
+	public User getByEmail(String email) {
+		
+		return userRepo.getUserByEmail(email);
+	}
+	
+	public User updateAccount(User userInForm) {
+		User userInDb = userRepo.findById(userInForm.getId()).get();
+		
+		if(!userInForm.getPassword().isEmpty()) {
+			userInDb.setPassword(userInForm.getPassword());
+			encodePassword(userInDb);
+		}
+		
+		if(userInForm.getPhotos() != null) {
+			userInDb.setPhotos(userInForm.getPhotos());
+		}
+		
+		userInDb.setFirstName(userInForm.getFirstName());
+		userInDb.setLastName(userInForm.getLastName());
+		
+		return userRepo.save(userInDb);
+	}
+
 }
