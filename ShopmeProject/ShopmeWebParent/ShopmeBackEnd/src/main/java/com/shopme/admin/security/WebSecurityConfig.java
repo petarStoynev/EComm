@@ -40,7 +40,8 @@ public class WebSecurityConfig {
 	@Bean
 	SecurityFilterChain configureHttp(HttpSecurity http) throws Exception {
 
-		http.authorizeHttpRequests(auth -> auth.anyRequest().authenticated())
+		http.authorizeHttpRequests(auth -> auth.requestMatchers("/users/**")
+				.hasAuthority("Admin").anyRequest().authenticated())
 				.formLogin(form -> form.loginPage("/login").usernameParameter("email").permitAll())
 				.logout(logout -> logout.permitAll())
 				.rememberMe(rem -> rem
