@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="org.apache.poi.xssf.usermodel.XSSFRow"/>
-    <fullyQualifiedTypeName name="org.apache.poi.xssf.usermodel.XSSFCellStyle"/>
-    <fullyQualifiedTypeName name="org.apache.poi.xssf.usermodel.XSSFFont"/>
     <fullyQualifiedTypeName name="com.shopme.admin.user.AbstractExporter"/>
     <fullyQualifiedTypeName name="jakarta.servlet.http.HttpServletResponse"/>
     <fullyQualifiedTypeName name="com.lowagie.text.Document"/>
@@ -47,17 +44,20 @@
     <fullyQualifiedTypeName name="org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace"/>
     <fullyQualifiedTypeName name="org.springframework.test.annotation.Rollback"/>
     <fullyQualifiedTypeName name="org.springframework.data.repository.CrudRepository"/>
-    <fullyQualifiedTypeName name="java.lang.Iterable"/>
     <fullyQualifiedTypeName name="com.shopme.admin.category.CategoryRepositoryTests"/>
-    <fullyQualifiedTypeName name="java.util.Set"/>
     <fullyQualifiedTypeName name="org.junit.jupiter.api.Test"/>
-    <fullyQualifiedTypeName name="java.lang.String"/>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
     <fullyQualifiedTypeName name="ch.qos.logback.core.model.Model"/>
     <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
-    <fullyQualifiedTypeName name="com.shopme.common.entity.Category"/>
     <fullyQualifiedTypeName name="com.shopme.admin.category.CategoryRepository"/>
     <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
     <fullyQualifiedTypeName name="com.shopme.admin.category.CategoryService"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
+    <fullyQualifiedTypeName name="org.springframework.ui.Model"/>
+    <fullyQualifiedTypeName name="org.slf4j.helpers.Reporter"/>
+    <fullyQualifiedTypeName name="java.lang.Iterable"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="java.util.Set"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="com.shopme.common.entity.Category"/>
 </qualifiedTypeNameHistroy>

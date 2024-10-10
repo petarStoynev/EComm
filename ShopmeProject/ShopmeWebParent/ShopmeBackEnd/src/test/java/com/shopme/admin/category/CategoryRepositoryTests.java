@@ -37,9 +37,9 @@ public class CategoryRepositoryTests {
 	
 	@Test
 	public void testCreateSubCategory() {
-		Category parent = new Category(2); 
+		Category parent = new Category(13); 
 		
-		Category subCategory = new Category("Keyboards",parent);
+		Category subCategory = new Category("Keycaps",parent);
 		
 		Category savedCategory = repo.save(subCategory);
 		

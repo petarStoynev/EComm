@@ -25,8 +25,19 @@ public class CategoryController {
 		
 		model.addAttribute("listCategories",listCategories);
 		
-		
 		return "categories/categories";
 	}
+	
+	@GetMapping("/categories/new")
+	public String newCategory(Model model) {
+		List<Category> listCategories = categoryService.listCategoriesUsedInForm();
+		
+		model.addAttribute("listCategories", listCategories);
+		model.addAttribute("category", new Category());
+		model.addAttribute("pageTitle","Shopme - New Category");
+		
+		return "/categories/categories_form";
+	}
+	
 
 }
