@@ -30,6 +30,22 @@ public class Category {
 		this(name);
 		this.parent = parent;
 	}
+	
+	public static Category copyIdAndName(Category category) {
+		Category copyCategory = new Category();
+		copyCategory.setId(category.getId());
+		copyCategory.setName(category.getName());
+		
+		return copyCategory;
+	}
+	
+	public static Category copyIdAndName(int id, String name) {
+		Category copyCategory = new Category();
+		copyCategory.setId(id);
+		copyCategory.setName(name);
+		
+		return copyCategory;
+	}
 
 	public Category(int id) {
 		this.id = id;

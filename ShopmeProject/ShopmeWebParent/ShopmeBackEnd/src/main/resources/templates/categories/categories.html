@@ -34,6 +34,9 @@
 		</form>
 	</div>
 	
+	<div th:if="${message != null}" class="alert alert-success text-center">
+		[[${message}]]
+	</div>
 	
 	<div class="full-details">
 	<table class="table table-bordered table-striped table-hover table-responsive-xl">
