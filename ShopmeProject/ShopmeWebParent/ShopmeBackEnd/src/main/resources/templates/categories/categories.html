@@ -55,6 +55,7 @@
 				<tr th:each="category: ${listCategories}">
 					<td >[[${category.id}]]</td>
 					<td>
+						<img th:src = "@{${category.imagePath}}" style="width: 100px" class="img-fluid"/>
 					</td>
 					<td>[[${category.name}]]</td>
 					<td>[[${category.alias}]]</td>
@@ -71,10 +72,10 @@
 					</td>
 					
 					<td>
-					<a class="fa-regular fa-pen-to-square fa-2x icon-green" th:href="@{'/category/edit/' + ${category.id}}"
+					<a class="fa-regular fa-pen-to-square fa-2x icon-green" th:href="@{'/categories/edit/' + ${category.id}}"
 					title="Edit this user"></a>
 						 &nbsp;
-					<a class="fa-solid fa-trash fa-2x icon-dark link-delete" th:href="@{'/category/delete/' + ${category.id}}"
+					<a class="fa-solid fa-trash fa-2x icon-dark link-delete" th:href="@{'/categories/delete/' + ${category.id}}"
 					th:userId="${category.id}"
 					title="Delete this user"></a>
 					</td>

@@ -2,6 +2,7 @@ package com.shopme.admin.category;
 
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.catchException;
 import static org.mockito.ArgumentMatchers.anyList;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
 
@@ -79,6 +80,13 @@ public class CategoryRepositoryTests {
 				}
 			}
 		}
+	}
+	
+	@Test
+	public void testListRootCategories() {
+		List<Category> rootCategories = repo.findRootCategories();
+		
+		rootCategories.forEach(cat -> System.out.println(cat.getName()));
 	}
 	
 	
