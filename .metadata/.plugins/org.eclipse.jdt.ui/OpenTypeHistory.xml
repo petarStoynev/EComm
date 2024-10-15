@@ -6,7 +6,7 @@
     <typeInfo handle="=ShopmeBackEnd/C:\/Users\/Petar\/.m2\/repository\/org\/springframework\/data\/spring-data-commons\/3.3.3\/spring-data-commons-3.3.3.jar=/maven.pomderived=/true=/=/maven.groupId=/org.springframework.data=/=/maven.artifactId=/spring-data-commons=/=/maven.version=/3.3.3=/=/maven.scope=/compile=/=/maven.pomderived=/true=/&lt;org.springframework.data.repository(PagingAndSortingRepository.class[PagingAndSortingRepository" modifiers="1537" timestamp="1724844043677"/>
     <typeInfo handle="=ShopmeBackEnd/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.shopme.admin{FileUploadUtil.java[FileUploadUtil" modifiers="1" timestamp="1726586791798"/>
     <typeInfo handle="=ShopmeCommon/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.shopme.common.entity{User.java[User" modifiers="1" timestamp="1728635975649"/>
-    <typeInfo handle="=ShopmeBackEnd/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.shopme.admin{MvcConfig.java[MvcConfig" modifiers="1" timestamp="1728891661002"/>
+    <typeInfo handle="=ShopmeBackEnd/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.shopme.admin{MvcConfig.java[MvcConfig" modifiers="1" timestamp="1728894189770"/>
     <typeInfo handle="=ShopmeBackEnd/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.shopme.admin.user.controller{UserController.java[UserController" modifiers="1" timestamp="1728032540798"/>
-    <typeInfo handle="=ShopmeCommon/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.shopme.common.entity{Category.java[Category" modifiers="1" timestamp="1728634535821"/>
+    <typeInfo handle="=ShopmeCommon/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.shopme.common.entity{Category.java[Category" modifiers="1" timestamp="1728897325854"/>
 </typeInfoHistroy>
