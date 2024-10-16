@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.tomcat.util.http.fileupload.FileUpload;
 import org.apache.xmlbeans.impl.xb.xsdschema.Public;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
@@ -29,11 +30,18 @@ public class CategoryController {
 	private CategoryService categoryService;
 	
 	@GetMapping("/categories")
-	public String listAll(Model model) {
+	public String listAll(@Param("sortDir") String sortDir, Model  model) {
 		
-		List<Category> listCategories = categoryService.listAll();
+		if(sortDir == null || sortDir.isEmpty()) {
+			sortDir = "asc";
+		}
+		
+		List<Category> listCategories = categoryService.listAll(sortDir);
+		
+		String reverseSortDir = sortDir.equals("asc") ? "desc" : "asc";
 		
 		model.addAttribute("listCategories",listCategories);
+		model.addAttribute("reverseSortDir", reverseSortDir);
 		
 		return "categories/categories";
 	}
