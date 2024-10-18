@@ -17,7 +17,10 @@ import org.springframework.stereotype.Service;
 
 import com.shopme.common.entity.Category;
 
+import jakarta.transaction.Transactional;
+
 @Service
+@Transactional
 public class CategoryService {
 	
 	@Autowired
@@ -72,6 +75,18 @@ public class CategoryService {
 			
 			listSubHierarchicalCategories(hierarchicalCategories, subCategory, newSubLevel,sortDir);
 		}
+		
+	}
+	
+	public void deleteCategory(Integer id) throws CategoryNotFoundException {
+		
+		Long countById = categoryRepo.countById(id);
+		
+		if( countById == null || countById == 0) {
+			throw new CategoryNotFoundException("Could not find any category with ID: " + id);
+		}
+		
+		categoryRepo.deleteById(id);
 		
 	}
 	
@@ -177,6 +192,10 @@ public class CategoryService {
 		sortedChildren.addAll(children);
 		
 		return sortedChildren;
+	}
+	
+	public void updateEnabledStatus(Integer id, Boolean enabled) {
+		categoryRepo.updateEnabledStatus(id, enabled);
 	}
 
 }

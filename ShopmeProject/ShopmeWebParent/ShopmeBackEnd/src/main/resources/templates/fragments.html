@@ -34,6 +34,49 @@
 		<p>Shopme Control Panel - Copyright &copy; Shopme</p>
 	</div>
 	
+	<div th:fragment = "category_status">
+	<a th:if="${category.enabled == true}" class="fas fa-check-circle fa-2x icon-green" 
+						th:href="@{'/categories/' + ${category.id} + '/enabled/false'}"
+						title="Disable category"></a>
+						
+	<a th:if="${category.enabled == false}" class="fas fa-circle fa-2x icon-dark" 
+						th:href="@{'/categories/' + ${category.id} + '/enabled/true'}"
+						title="Enable category"></a>
+	</div>
+	
+	<div th:fragment = "delete_modal" class="modal fade text-center" id="confirmModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">Delete Confirmation</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				
+				<div class="modal_body">
+					<span id="confirmText"></span>
+				</div>
+				
+				<div class="modal-footer">
+				<a class=" btn btn-success" href="" id="yesButton">Yes</a>
+					<button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+	
+	<div th:fragment = "category_actions" th:remove="tag">
+	<a class="fa-regular fa-pen-to-square fa-2x icon-green" th:href="@{'/categories/edit/' + ${category.id}}"
+					title="Edit this category"></a>
+						 &nbsp;
+					<th:block th:if = "${category.hasChildren == false}">
+					<a  class="fa-solid fa-trash fa-2x icon-dark link-delete" 
+					th:href="@{'/categories/delete/' + ${category.id}}"
+					th:entityId="${category.id}"
+					title="Delete this category"></a>
+					</th:block>
+	</div>
+	
 	
 					
 </body>

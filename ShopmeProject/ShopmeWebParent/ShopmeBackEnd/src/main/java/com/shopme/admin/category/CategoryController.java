@@ -100,6 +100,39 @@ public class CategoryController {
 			
 	}
 	
+	@GetMapping("/categories/{id}/enabled/{status}")
+	public String updateCategoryEnabledStatus(@PathVariable("id") Integer id,
+			@PathVariable("status") Boolean enabled,
+			RedirectAttributes ra) {
+		
+		String status = enabled ? "enabled" : "disabled";
+		String message = "The user with ID: " + id + " has been " + status +"!"; 
+		
+		categoryService.updateEnabledStatus(id, enabled);
+		ra.addFlashAttribute("message",message);
+		
+		
+		return "redirect:/categories";
+	}
+	
+	@GetMapping("/categories/delete/{id}")
+	public String deleteCategory(@PathVariable(name = "id") Integer id,
+			Model model,
+			RedirectAttributes ra) {
+		
+		try {
+			categoryService.deleteCategory(id);
+			String categoryDir = "../category-images/" + id;
+			FileUploadUtil.removeDir(categoryDir);
+			ra.addFlashAttribute("message","Category with ID: " + id + " has been deleted successfully!");
+		} catch (Exception ex) {
+			ra.addFlashAttribute("message",ex.getMessage());
+		}
+		
+		
+		return "redirect:/categories";
+	}
+	
 
 	
 

@@ -8,5 +8,8 @@
     <typeInfo handle="=ShopmeCommon/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.shopme.common.entity{User.java[User" modifiers="1" timestamp="1728635975649"/>
     <typeInfo handle="=ShopmeBackEnd/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.shopme.admin{MvcConfig.java[MvcConfig" modifiers="1" timestamp="1728894189770"/>
     <typeInfo handle="=ShopmeBackEnd/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.shopme.admin.user.controller{UserController.java[UserController" modifiers="1" timestamp="1728032540798"/>
+    <typeInfo handle="=ShopmeBackEnd/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.shopme.admin.category{CategoryRepository.java[CategoryRepository" modifiers="513" timestamp="1729088607263"/>
+    <typeInfo handle="=ShopmeBackEnd/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.shopme.admin.category{CategoryService.java[CategoryService" modifiers="1" timestamp="1729090924011"/>
+    <typeInfo handle="=ShopmeBackEnd/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.shopme.admin.category{CategoryController.java[CategoryController" modifiers="1" timestamp="1729090747347"/>
     <typeInfo handle="=ShopmeCommon/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.shopme.common.entity{Category.java[Category" modifiers="1" timestamp="1729013214075"/>
 </typeInfoHistroy>
